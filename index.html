@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Laporan Soal dan Jawaban - Interaktif dan Dinamis">
+    <title>Laporan Soal dan Jawaban</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom Sidebar Scroll */
+        .sidebar {
+            max-height: 100vh;
+            overflow-y: auto;
+        }
+        /* Custom Content Visibility */
+        .content {
+            display: none;
+        }
+        .content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <!-- Header -->
+    <header class="bg-gray-800 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-3xl font-bold">Laporan Soal dan Jawaban</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="#home" class="hover:underline">Home</a></li>
+                    <li><a href="#about" class="hover:underline">Tentang</a></li>
+                    <li><a href="#contact" class="hover:underline">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside class="sidebar bg-gray-800 text-white w-1/4 p-4">
+            <h2 class="text-2xl font-bold mb-6">Navigasi</h2>
+            <ul class="space-y-4">
+                <li>
+                    <button class="w-full text-left" onclick="toggleContent('php-basic')">A. Konsep Dasar PHP</button>
+                </li>
+                <li>
+                    <button class="w-full text-left" onclick="toggleContent('get-post')">B. Perbandingan GET dan POST</button>
+                </li>
+                <li>
+                    <button class="w-full text-left" onclick="toggleContent('include-require')">C. Include, Require, & MySQL</button>
+                </li>
+                <li>
+                    <button class="w-full text-left" onclick="toggleContent('advanced-topics')">D. Topik Lanjutan PHP</button>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-8 overflow-y-auto">
+            <!-- A. Konsep Dasar PHP -->
+            <div id="php-basic" class="content">
+                <h2 class="text-2xl font-bold mb-4">A. Konsep Dasar PHP</h2>
+                <p><strong>1. Apa itu PHP?</strong><br>PHP adalah bahasa pemrograman server-side yang digunakan untuk membangun aplikasi web dinamis.</p>
+                <p><strong>2. Keunggulan PHP:</strong></p>
+                <ul class="list-disc list-inside">
+                    <li>Mudah dipelajari.</li>
+                    <li>Dukungan komunitas besar.</li>
+                    <li>Kompatibilitas tinggi dengan banyak platform.</li>
+                </ul>
+                <h3 class="text-xl font-semibold mt-4">Contoh Hello World</h3>
+                <pre class="bg-gray-200 p-4 rounded">
+&lt;?php
+echo "Hello, World!";
+?>
+                </pre>
+            </div>
+
+            <!-- B. Perbandingan GET dan POST -->
+            <div id="get-post" class="content">
+                <h2 class="text-2xl font-bold mb-4">B. Perbandingan GET dan POST</h2>
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-gray-800 text-white">
+                            <th class="p-2 border">GET</th>
+                            <th class="p-2 border">POST</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="p-2 border">Mengirim data melalui URL.</td>
+                            <td class="p-2 border">Mengirim data melalui body HTTP.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 border">Cocok untuk data ringan.</td>
+                            <td class="p-2 border">Aman untuk data sensitif.</td>
+                        </tr>
+                        <tr>
+                            <td class="p-2 border">Data terlihat di URL.</td>
+                            <td class="p-2 border">Data tidak terlihat di URL.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- C. Include, Require, dan MySQL -->
+            <div id="include-require" class="content">
+                <h2 class="text-2xl font-bold mb-4">C. Include, Require, dan Koneksi MySQL</h2>
+                <p><strong>1. Perbedaan Include dan Require:</strong></p>
+                <ul class="list-disc list-inside">
+                    <li>Include: Tidak fatal jika file tidak ditemukan.</li>
+                    <li>Require: Fatal jika file tidak ditemukan.</li>
+                </ul>
+                <p><strong>2. Contoh Koneksi MySQL:</strong></p>
+                <pre class="bg-gray-200 p-4 rounded">
+&lt;?php
+$conn = new mysqli("localhost", "username", "password", "database");
+if ($conn->connect_error) {
+    die("Koneksi gagal: " . $conn->connect_error);
+}
+echo "Koneksi berhasil!";
+?>
+                </pre>
+            </div>
+
+            <!-- D. Topik Lanjutan PHP -->
+            <div id="advanced-topics" class="content">
+                <h2 class="text-2xl font-bold mb-4">D. Topik Lanjutan PHP</h2>
+                <h3 class="text-xl font-semibold">1. Object-Oriented Programming (OOP)</h3>
+                <p>PHP mendukung pemrograman berorientasi objek, yang memungkinkan pengorganisasian kode yang lebih baik.</p>
+                <h3 class="text-xl font-semibold mt-4">2. Framework PHP</h3>
+                <p>Framework seperti Laravel, CodeIgniter, dan Symfony mempercepat pengembangan aplikasi web.</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white p-4">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 Maajid Dhirottsaha.202331094.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleContent(id) {
+            document.querySelectorAll('.content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(id).classList.add('active');
+        }
+    </script>
+</body>
+</html>
