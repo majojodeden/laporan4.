@@ -19,6 +19,26 @@
         .content.active {
             display: block;
         }
+        /* Hover Effects */
+        .hover-underline-animation {
+            position: relative;
+        }
+        .hover-underline-animation::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #fff;
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+        .hover-underline-animation:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
     </style>
 </head>
 <body class="bg-gray-100 font-sans">
@@ -26,33 +46,43 @@
     <!-- Header -->
     <header class="bg-gray-800 text-white p-4">
         <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-3xl font-bold">Laporan Soal dan Jawaban</h1>
+            <div>
+                <h1 class="text-3xl font-bold">Laporan Soal dan Jawaban</h1>
+                <p class="text-sm">maajid dhirottsaha [202331094]</p> <!-- Teks tambahan di bawah judul -->
+            </div>
             <nav>
                 <ul class="flex space-x-4">
-                    <li><a href="#home" class="hover:underline">Home</a></li>
-                    <li><a href="#about" class="hover:underline">Tentang</a></li>
-                    <li><a href="#contact" class="hover:underline">Kontak</a></li>
+                    <li><a href="#home" class="hover-underline-animation">Home</a></li>
+                    <li><a href="#about" class="hover-underline-animation">Tentang</a></li>
+                    <li><a href="#contact" class="hover-underline-animation">Kontak</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
+    <!-- Main Layout -->
     <div class="flex h-screen">
         <!-- Sidebar -->
-        <aside class="sidebar bg-gray-800 text-white w-1/4 p-4">
+        <aside class="sidebar bg-gray-900 text-white w-1/4 p-4 shadow-lg">
             <h2 class="text-2xl font-bold mb-6">Navigasi</h2>
             <ul class="space-y-4">
                 <li>
-                    <button class="w-full text-left" onclick="toggleContent('php-basic')">A. Konsep Dasar PHP</button>
+                    <button class="w-full text-left hover:bg-gray-700 p-2 rounded-md" onclick="toggleContent('php-basic')">A. Konsep Dasar PHP</button>
                 </li>
                 <li>
-                    <button class="w-full text-left" onclick="toggleContent('get-post')">B. Perbandingan GET dan POST</button>
+                    <button class="w-full text-left hover:bg-gray-700 p-2 rounded-md" onclick="toggleContent('get-post')">B. Perbandingan GET dan POST</button>
                 </li>
                 <li>
-                    <button class="w-full text-left" onclick="toggleContent('include-require')">C. Include, Require, & MySQL</button>
+                    <button class="w-full text-left hover:bg-gray-700 p-2 rounded-md" onclick="toggleContent('include-require')">C. Include, Require, & MySQL</button>
                 </li>
                 <li>
-                    <button class="w-full text-left" onclick="toggleContent('advanced-topics')">D. Topik Lanjutan PHP</button>
+                    <button class="w-full text-left hover:bg-gray-700 p-2 rounded-md" onclick="toggleContent('advanced-topics')">D. Topik Lanjutan PHP</button>
+                </li>
+                <li>
+                    <button class="w-full text-left hover:bg-gray-700 p-2 rounded-md" onclick="toggleContent('oop')">E. Pemrograman Berorientasi Objek (OOP)</button>
+                </li>
+                <li>
+                    <button class="w-full text-left hover:bg-gray-700 p-2 rounded-md" onclick="toggleContent('php-frameworks')">F. Framework PHP</button>
                 </li>
             </ul>
         </aside>
@@ -70,7 +100,7 @@
                     <li>Kompatibilitas tinggi dengan banyak platform.</li>
                 </ul>
                 <h3 class="text-xl font-semibold mt-4">Contoh Hello World</h3>
-                <pre class="bg-gray-200 p-4 rounded">
+                <pre class="bg-gray-200 p-4 rounded shadow">
 &lt;?php
 echo "Hello, World!";
 ?>
@@ -113,7 +143,7 @@ echo "Hello, World!";
                     <li>Require: Fatal jika file tidak ditemukan.</li>
                 </ul>
                 <p><strong>2. Contoh Koneksi MySQL:</strong></p>
-                <pre class="bg-gray-200 p-4 rounded">
+                <pre class="bg-gray-200 p-4 rounded shadow">
 &lt;?php
 $conn = new mysqli("localhost", "username", "password", "database");
 if ($conn->connect_error) {
@@ -127,28 +157,71 @@ echo "Koneksi berhasil!";
             <!-- D. Topik Lanjutan PHP -->
             <div id="advanced-topics" class="content">
                 <h2 class="text-2xl font-bold mb-4">D. Topik Lanjutan PHP</h2>
-                <h3 class="text-xl font-semibold">1. Object-Oriented Programming (OOP)</h3>
-                <p>PHP mendukung pemrograman berorientasi objek, yang memungkinkan pengorganisasian kode yang lebih baik.</p>
-                <h3 class="text-xl font-semibold mt-4">2. Framework PHP</h3>
-                <p>Framework seperti Laravel, CodeIgniter, dan Symfony mempercepat pengembangan aplikasi web.</p>
+                <h3 class="text-xl font-semibold">1. Pemrograman Asinkron</h3>
+                <p>PHP versi terbaru mendukung pemrograman asinkron, yang memungkinkan pengelolaan request yang lebih efisien.</p>
+                <h3 class="text-xl font-semibold mt-4">2. Security dalam PHP</h3>
+                <p>Mengimplementasikan teknik keamanan seperti prepared statements dan filtering input adalah penting dalam pengembangan aplikasi web dengan PHP.</p>
+            </div>
+
+            <!-- E. Pemrograman Berorientasi Objek (OOP) -->
+            <div id="oop" class="content">
+                <h2 class="text-2xl font-bold mb-4">E. Pemrograman Berorientasi Objek (OOP)</h2>
+                <p>PHP mendukung penuh pemrograman berorientasi objek (OOP), yang menyediakan struktur kode yang lebih terorganisir dan modular.</p>
+                <h3 class="text-xl font-semibold mt-4">Contoh Sederhana OOP</h3>
+                <pre class="bg-gray-200 p-4 rounded shadow">
+&lt;?php
+class Mobil {
+    public $merk;
+    public $warna;
+
+    public function __construct($merk, $warna) {
+        $this->merk = $merk;
+        $this->warna = $warna;
+    }
+
+    public function infoMobil() {
+        return "Mobil ini adalah $this->merk berwarna $this->warna.";
+    }
+}
+
+$mobil1 = new Mobil("Toyota", "Merah");
+echo $mobil1->infoMobil();
+?>
+                </pre>
+            </div>
+
+            <!-- F. Framework PHP -->
+            <div id="php-frameworks" class="content">
+                <h2 class="text-2xl font-bold mb-4">F. Framework PHP</h2>
+                <p>Framework PHP seperti Laravel, CodeIgniter, dan Symfony membantu mempercepat pengembangan aplikasi web dengan menyediakan struktur yang terorganisir dan fitur-fitur siap pakai.</p>
+                <h3 class="text-xl font-semibold mt-4">Contoh Penggunaan Laravel</h3>
+                <pre class="bg-gray-200 p-4 rounded shadow">
+# Membuat route di Laravel
+Route::get('/welcome', function () {
+    return view('welcome');
+});
+                </pre>
             </div>
         </main>
     </div>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white p-4">
+    <footer class="bg-gray-800 text-white p-4 mt-8">
         <div class="container mx-auto text-center">
-            <p>&copy; 2024 Maajid Dhirottsaha.202331094.</p>
+            <p>&copy; 2024 Laporan Soal dan Jawaban | maajid dhirottsaha</p>
         </div>
     </footer>
 
     <script>
-        function toggleContent(id) {
-            document.querySelectorAll('.content').forEach(content => {
+        // Function to toggle content visibility
+        function toggleContent(sectionId) {
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => {
                 content.classList.remove('active');
             });
-            document.getElementById(id).classList.add('active');
+            document.getElementById(sectionId).classList.add('active');
         }
     </script>
+
 </body>
 </html>
